@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 4
   rb: {fileID: 153293947}
+  animator: {fileID: 153293950}
 --- !u!50 &153293947
 Rigidbody2D:
   serializedVersion: 4
@@ -246,7 +247,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.37815127, y: 0.9978992, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8.955, y: 8.955, z: 8.955}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
