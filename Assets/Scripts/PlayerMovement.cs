@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     Vector2 movement;
-    
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", movement.sqrMagnitude);
         if (Input.GetKeyDown("space"))
         {
-            Debug.Log("space key was pressed");
+            SceneManager.LoadScene("WeightScaleScene");
+            Debug.Log("Scene loaded");
         }
 
     }

@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/WeightScaleScene.unity
+    guid: a34f6ce4ead8a6d48a9918ab7f564699
   m_configObjects: {}
