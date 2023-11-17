@@ -1,29 +1,25 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.U2D.IK;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Item item;
-    [SerializeField] private TMP_Text PressButtonText;
-    [SerializeField] float speed = 4f;
+    [SerializeField] private float speed = 4f;
+    
     private Vector2 moveDirection;
     private PlayerAnimation animations;
-    public Rigidbody2D rb;
-    List<float>CollectedItemsValues = new List<float>();
+    public TMP_Text PressButtonText;
+    private Rigidbody2D rb;
+    private List<float> CollectedItemsValues;
 
-    void Start() 
+    private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         animations = GetComponent<PlayerAnimation>();
     }
-    void Update()
+    private void Update()
     {
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
@@ -43,14 +39,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             animations.ChangeAnimationState(PlayerAnimation.AnimationState.IDLE);
-
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        print(moveDirection.normalized);
+        //print(moveDirection.normalized);
         rb.MovePosition(rb.position + moveDirection.normalized * (speed * Time.fixedDeltaTime));
     }
+
 
     void OnTriggerEnter2D(Collider2D collider){
 
@@ -68,6 +64,13 @@ public class PlayerMovement : MonoBehaviour
             PressButtonText.text = "Press SpaceBar to scale";
             if(Input.GetKeyDown(KeyCode.Space)){
                 SceneManager.LoadScene("WeightScaleScene");
+            }
+        }
+        else if(collider.gameObject.CompareTag("Character")){
+            Debug.Log("Press Z to interact");
+            PressButtonText.text = "Press Z to interact";
+            if(Input.GetKeyDown(KeyCode.Z)){
+                GameObject.FindGameObjectWithTag("Dialogue UI").SetActive(true);
             }
         }
     }
