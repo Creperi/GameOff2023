@@ -12,12 +12,14 @@ public class PlayerMovement : MonoBehaviour
     private PlayerAnimation animations;
     public TMP_Text PressButtonText;
     private Rigidbody2D rb;
-    private List<float> CollectedItemsValues;
+    public GameObject DialogueUI;
+    //List<float> CollectedItemsValues = new List<float>();
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animations = GetComponent<PlayerAnimation>();
+        DialogueUI = GameObject.Find("Dialogue UI");
     }
     private void Update()
     {
@@ -55,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             Item itemScript = collider.gameObject.GetComponent<Item>();
             PressButtonText.text = "Press E to pick up item";
             if(Input.GetKeyDown(KeyCode.E)){
-                CollectedItemsValues.Add(itemScript.getValue());
+                //CollectedItemsValues.Add(itemScript.getValue());
                 Debug.Log("Item added ");
             }
         }
@@ -70,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Press Z to interact");
             PressButtonText.text = "Press Z to interact";
             if(Input.GetKeyDown(KeyCode.Z)){
-                GameObject.FindGameObjectWithTag("Dialogue UI").SetActive(true);
+                DialogueUI.SetActive(true);
             }
         }
     }
